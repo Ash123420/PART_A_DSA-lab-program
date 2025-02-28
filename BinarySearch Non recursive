@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+// Function to implement Binary Search (Non-Recursive)
+int binarySearch(int arr[], int n, int key) {
+    int left = 0, right = n - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (arr[mid] == key) {
+            return mid; // Key found at index mid
+        }
+        
+        if (arr[mid] < key) {
+            left = mid + 1; // Search the right half
+        } else {
+            right = mid - 1; // Search the left half
+        }
+    }
+    return -1; // Key not found
+}
+
+// Function to print the result
+void printResult(int index) {
+    if (index != -1) {
+        cout << "Element found at index: " << index << endl;
+    } else {
+        cout << "Element not found in the array" << endl;
+    }
+}
+
+int main() {
+    int arr[] = {11, 12, 22, 25, 34, 64, 90}; // Sorted array
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int key;
+    
+    cout << "Enter element to search: ";
+    cin >> key;
+    
+    int result = binarySearch(arr, n, key);
+    printResult(result);
+    
+    return 0;
+}
