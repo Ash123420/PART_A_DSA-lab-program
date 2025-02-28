@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+// Function to implement Binary Search
+int binarySearch(int arr[], int left, int right, int key) {
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (arr[mid] == key) {
+            return mid; // Key found at index mid
+        }
+        
+        if (arr[mid] < key) {
+            left = mid + 1; // Search the right half
+        } else {
+            right = mid - 1; // Search the left half
+        }
+    }
+    return -1; // Key not found
+}
+
+// Function to print the result
+void printResult(int index) {
+    if (index != -1) {
+        cout << "Element found at index: " << index << endl;
+    } else {
+        cout << "Element not found in the array" << endl;
+    }
+}
+
+int main() {
